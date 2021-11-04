@@ -14,9 +14,9 @@ class CreateCalendarsTable extends Migration
     public function up() {
         Schema::create('calendars', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->string('color');
+            $table->string('name')->default('Default');
+            $table->string('description')->default('Default calendar.');
+            $table->string('color')->default('blue');
             $table->boolean('hidden')->default(false);
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Calendar;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -39,6 +40,10 @@ class UserController extends Controller {
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
+        ]);
+
+        $calendar = Calendar::create([
+            'user_id' => $user->id
         ]);
 
         $token = JWTAuth::fromUser($user);
