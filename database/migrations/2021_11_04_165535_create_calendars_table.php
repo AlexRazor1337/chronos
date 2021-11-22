@@ -16,8 +16,7 @@ class CreateCalendarsTable extends Migration
             $table->id();
             $table->string('name')->default('Default');
             $table->string('description')->default('Default calendar.');
-            $table->string('color')->default('blue');
-            $table->boolean('hidden')->default(false);
+            $table->string('color')->default('gray');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });

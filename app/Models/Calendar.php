@@ -10,15 +10,14 @@ class Calendar extends Model {
     use HasFactory;
 
     protected $fillable = [
-        'name', 'description', 'color', 'hidden'
+        'name', 'description', 'color', 'user_id'
     ];
 
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
         'description' => 'string',
-        'color' => 'string',
-        'hidden' => 'boolean'
+        'color' => 'string'
     ];
 
     public function events() { return $this->hasMany(Event::class); }

@@ -42,6 +42,7 @@ class UserController extends Controller {
             'password' => Hash::make($request->get('password')),
         ]);
 
+
         $calendar = Calendar::create([
             'user_id' => $user->id
         ]);
