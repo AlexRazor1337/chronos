@@ -6,80 +6,155 @@
 	},
 	"item": [
 		{
-			"name": "New Folder",
-			"item": []
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"token\", jsonData['token']);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "alexrazor@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "devpass",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/user",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Register",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "127.0.0.1:8000/api/register?name=alexrazor&email=test@email.com&password=devpass&password_confirmation=devpass",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"register"
-					],
-					"query": [
+			"name": "Calendars",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
 						{
-							"key": "name",
-							"value": "alexrazor"
-						},
-						{
-							"key": "email",
-							"value": "test@email.com"
-						},
-						{
-							"key": "password",
-							"value": "devpass"
-						},
-						{
-							"key": "password_confirmation",
-							"value": "devpass"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"token\", jsonData['token']);",
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "127.0.0.1:8000/api/login?email=test@email.com&password=devpass",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
 					],
-					"port": "8000",
-					"path": [
-						"api",
-						"login"
-					],
-					"query": [
-						{
-							"key": "email",
-							"value": "test@email.com"
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "alexrazor",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alexrazor@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "devpass",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "devpass",
+									"type": "text"
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "devpass"
+						"url": {
+							"raw": "127.0.0.1:8000/api/calendars",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"calendars"
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "Get my calendars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
 			"name": "Open",
@@ -124,28 +199,36 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"name": "Add user",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "127.0.0.1:8000/api/user",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"user"
-					]
-				}
-			},
-			"response": []
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
