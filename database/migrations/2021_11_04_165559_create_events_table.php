@@ -10,9 +10,10 @@ class CreateEventsTable extends Migration {
             $table->id();
             $table->string('name');
             $table->date('date');
-            $table->integer('duration');
+            $table->integer('duration')->default(60 * 60);
             $table->foreignId('calendar_id')->constrained('calendars')->onDelete('cascade');
-            $table->enum('category', ['arrangement', 'reminder', 'task']);
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->enum('category', ['arrangement', 'reminder', 'task'])->default('task');
             $table->timestamps();
         });
     }

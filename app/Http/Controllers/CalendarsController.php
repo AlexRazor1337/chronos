@@ -36,4 +36,11 @@ class CalendarsController extends Controller {
         $user = JWTAuth::user();
         return Calendar::where('user_id', $user->id)->get();
     }
+
+    public function getById($id) {
+        $calendar = Calendar::find($id);
+        $user = JWTAuth::user();
+        if ($user->id == $calendar->user_id) return Calendar::find($id);
+        return response()->json(["message" => "You don't have access"], 403);
+    }
 }
