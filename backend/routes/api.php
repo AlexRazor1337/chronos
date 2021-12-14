@@ -12,6 +12,7 @@ Route::post('login', [UserController::class, 'authenticate']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('user', [UserController::class, 'getAuthenticatedUser']);
+    Route::get('logout', [UserController::class, 'logout']);
     Route::post('calendars', [CalendarsController::class, 'create']);
     Route::get('calendars', [CalendarsController::class, 'getMy']);
     Route::get('calendars/{id}', [CalendarsController::class, 'getById']);

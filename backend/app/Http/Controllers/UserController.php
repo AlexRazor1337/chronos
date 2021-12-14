@@ -25,6 +25,13 @@ class UserController extends Controller {
         return response()->json(compact('token'));
     }
 
+    public function logout() {
+        JWTAuth::invalidate(JWTAuth::getToken());
+
+        return response(['message' => 'User was logged out'], 200);
+    }
+
+
     public function register(Request $request) {
             $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:users',
@@ -32,7 +39,7 @@ class UserController extends Controller {
             'password' => 'required|string|min:6|confirmed', # {field}_confirmation eg. password_confirmation
         ]);
 
-        if ($validator->fails()){
+        if ($validator->fails()) { // TODO validator fix JSON
             return response()->json($validator->errors()->toJson(), 400);
         }
 

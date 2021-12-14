@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login/Login";
+import Registration from "./Registration/Registration";
 import Footer from "./Misc/Footer";
 import Header from "./Misc/Header";
 
@@ -28,7 +29,7 @@ export default function App() {
 
   return (
     <div className="holy-grail">
-      <Header token={token}/>
+      <Header token={token} setToken={setToken}/>
       <main className="holy-grail-body">
         <main className="holy-grail-content">
         <Router>
@@ -37,7 +38,7 @@ export default function App() {
               <Login setToken={setToken}/>
             </Route>
             <Route path="/register">
-              {/* <Registration /> */}
+              <Registration setToken={setToken}/>
             </Route>
             <Route path="/">
               <Home/>

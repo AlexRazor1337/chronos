@@ -21,8 +21,18 @@
 	.holy-grail-body {
 		flex-direction: row;
 	}
-	
+
 	.hg-sidebar {
 		flex: 0 0 260px;
 	}
+}
+
+
+.center {
+	display:flex;
+	justify-content: center;
+}
+
+.pointer {
+	cursor: pointer;
 }

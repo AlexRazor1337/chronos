@@ -1,5 +1,5 @@
 export default function Home() {
     return (<>
-        <p>Welcome</p>
+        <div className="center"><h2>Welcome to the Chronos app. Start managing your time now!</h2></div>
     </>);
 };
