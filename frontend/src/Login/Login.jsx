@@ -1,11 +1,10 @@
 import Cookies from 'js-cookie'
-import { useState } from 'react';
 import { isExpired, decodeToken } from "react-jwt";
 import { Redirect, useHistory } from 'react-router-dom';
 
 const axios = require('axios').default;
 
-export default function Login() {
+export default function Login(props) {
     const token = Cookies.get('token');
     const decodedToken = decodeToken(token);
     const isMyTokenExpired = isExpired(token);
@@ -19,7 +18,7 @@ export default function Login() {
         axios.post('api/login', {email, password}).then(function (response) {
             console.log(response);
             Cookies.set('token', response.data.token, { expires: 1 })
-
+            props.setToken(response.data.token)
             history.push('/');
         }).catch(function (error) {
             if (error?.response?.data?.message) {

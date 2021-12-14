@@ -1,12 +1,15 @@
 import Cookies from "js-cookie";
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import Home from "./Home";
 import Login from "./Login/Login";
+import Footer from "./Misc/Footer";
+import Header from "./Misc/Header";
 
 const axios = require('axios');
 axios.defaults.baseURL = "http://127.0.0.1:8000"
@@ -21,21 +24,29 @@ axios.interceptors.request.use(
 )
 
 export default function App() {
+  const [token, setToken] = useState(Cookies.get('token'));
+
   return (
-    <div className="App">
-      <Router>
-      <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/register">
-            {/* <Registration /> */}
-          </Route>
-          <Route path="/">
-            {/* <Home /> */}
-          </Route>
-        </Switch>
-      </Router>
+    <div className="holy-grail">
+      <Header token={token}/>
+      <main className="holy-grail-body">
+        <main className="holy-grail-content">
+        <Router>
+        <Switch>
+            <Route path="/login">
+              <Login setToken={setToken}/>
+            </Route>
+            <Route path="/register">
+              {/* <Registration /> */}
+            </Route>
+            <Route path="/">
+              <Home/>
+            </Route>
+          </Switch>
+        </Router>
+        </main>
+      </main>
+      <Footer/>
     </div>
   );
 }
