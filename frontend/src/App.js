@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login/Login";
+import MainCalendar from "./MainCalendar/MainCalendar";
 import Registration from "./Registration/Registration";
 import Footer from "./Misc/Footer";
 import Header from "./Misc/Header";
@@ -39,6 +40,9 @@ export default function App() {
             </Route>
             <Route path="/register">
               <Registration setToken={setToken}/>
+            </Route>
+            <Route path="/calendar">
+              <MainCalendar/>
             </Route>
             <Route path="/">
               <Home/>

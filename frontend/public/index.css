@@ -36,3 +36,11 @@
 .pointer {
 	cursor: pointer;
 }
+
+.rbc-event-label {
+	font-size: 0.8rem;
+}
+
+.rbc-event-content {
+	font-size: 0.8rem;
+}
