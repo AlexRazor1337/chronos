@@ -44,7 +44,7 @@ export default function CalendarsList(params) {
 
     if (loading) {
         return (<div className="center">
-            <ClipLoader color="blue" loading={loading} size={150} />
+            <ClipLoader color="blue" loading={loading} size={100} />
         </div>);
     } else {
         if (isCreateShowing) {

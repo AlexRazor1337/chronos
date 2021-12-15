@@ -32,7 +32,7 @@ export default function Registration(props) {
     } else {
         return (<div className="center">
             <form onSubmit={submit}>
-                <h2>Login</h2>
+                <h2>Register</h2>
                 <input placeholder="Login" required type='text'
                     name="name"
                 />

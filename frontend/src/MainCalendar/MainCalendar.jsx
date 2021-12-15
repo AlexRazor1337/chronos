@@ -56,7 +56,7 @@ export default function MainCalendar(props) { // TODO add spinner, calendar sele
     const localizer = momentLocalizer(moment)
     if (loading) {
         return (<div className="center">
-            <ClipLoader color="blue" loading={loading} size={150} />
+            <ClipLoader color="blue" loading={loading} size={100} />
         </div>);
     } else {
         return (
@@ -77,7 +77,7 @@ export default function MainCalendar(props) { // TODO add spinner, calendar sele
                     defaultView={Views.WEEK}
                     scrollToTime={new Date(2000, 1, 1, 6)}
                     defaultDate={Date.now()}
-                    // onSelectEvent={event => alert(event.title)}
+                    onSelectEvent={event => alert(event.title + '\n' + event.desc.toUpperCase())}
                     onSelectSlot={handleSelect}
                     selectable
                 />
