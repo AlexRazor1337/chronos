@@ -7,7 +7,7 @@ import ExampleControlSlot from './ExampleControlSlot'
 
 const axios = require('axios').default;
 
-export default function MainCalendar(props) { // TODO add spinner, load events
+export default function MainCalendar(props) { // TODO add spinner, protect route, calendar selector
     const [calendarEvents, setEvents] = useState(events);
     const handleSelect = ({ start, end }) => {
         const title = window.prompt('New Event name')
