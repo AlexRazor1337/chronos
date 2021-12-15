@@ -51,3 +51,13 @@ footer {
 .rbc-header {
 	padding: 10px !important;
 }
+
+.calendarListItem {
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.calendarListItem p {
+	margin: 0px;
+}

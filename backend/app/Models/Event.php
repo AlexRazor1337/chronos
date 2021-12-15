@@ -15,7 +15,7 @@ class Event extends Model {
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'date' => 'datetime',
+        'date' => 'string',
         'duration' => 'integer',
         'calendar_id' => 'integer',
         'category' => 'string'

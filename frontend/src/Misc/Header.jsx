@@ -5,7 +5,6 @@ const axios = require('axios').default;
 export default function Header(props) {
     const [user, setUser] = useState(null);
     
-
     useEffect(() => {
         axios.get('api/user').then(function (response) {
             setUser(response.data.user);

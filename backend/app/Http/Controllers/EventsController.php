@@ -15,7 +15,7 @@ class EventsController extends Controller  {
     public function create(Request $request) {
             $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:128',
-            'date' => 'required|integer',
+            'date' => 'required|string',
             'calendar_id' => 'required|integer',
             'category' => 'in:arrangement,reminder,task',
             'duration' => 'integer'
@@ -33,6 +33,7 @@ class EventsController extends Controller  {
             'date' => $request->get('date'),
             'calendar_id' => $request->get('calendar_id'),
             'category' => $request->get('category', 'task'),
+            'duration' => $request->get('duration'),
             'user_id' => $user->id
         ]);
 

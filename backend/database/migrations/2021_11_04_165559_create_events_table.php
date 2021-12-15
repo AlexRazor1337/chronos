@@ -9,7 +9,7 @@ class CreateEventsTable extends Migration {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('date');
+            $table->string('date');
             $table->integer('duration')->default(60 * 60);
             $table->foreignId('calendar_id')->constrained('calendars')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');

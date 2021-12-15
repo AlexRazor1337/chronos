@@ -10,6 +10,7 @@ import Home from "./Home";
 import Login from "./Login/Login";
 import MainCalendar from "./MainCalendar/MainCalendar";
 import Registration from "./Registration/Registration";
+import CalendarsList from "./CalendarsList/CalendarsList";
 import Footer from "./Misc/Footer";
 import Header from "./Misc/Header";
 
@@ -42,6 +43,7 @@ export default function App() {
               <Registration setToken={setToken}/>
             </Route>
             <Route path="/calendar/:id" exact component={MainCalendar}/>
+            <Route path="/calendars" exact component={CalendarsList}/>
             <Route path="/">
               <Home/>
             </Route>
