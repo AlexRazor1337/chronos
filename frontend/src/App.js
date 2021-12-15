@@ -41,9 +41,7 @@ export default function App() {
             <Route path="/register">
               <Registration setToken={setToken}/>
             </Route>
-            <Route path="/calendar">
-              <MainCalendar/>
-            </Route>
+            <Route path="/calendar/:id" exact component={MainCalendar}/>
             <Route path="/">
               <Home/>
             </Route>

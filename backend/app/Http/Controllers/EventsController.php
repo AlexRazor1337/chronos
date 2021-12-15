@@ -43,4 +43,15 @@ class EventsController extends Controller  {
         $user = JWTAuth::user();
         return Event::where('user_id', $user->id)->get();
     }
+
+    public function getById($id) {
+        $calendar = Calendar::find($id);
+        if (!$calendar) {
+            return response()->json(["message" => "Calendar not found!"], 404);
+        }
+
+        $user = JWTAuth::user();
+        if ($user->id == $calendar->user_id) return response()->json(Event::where('calendar_id', $calendar->id)->get());
+        return response()->json(["message" => "You don't have access"], 403);       
+    }
 }

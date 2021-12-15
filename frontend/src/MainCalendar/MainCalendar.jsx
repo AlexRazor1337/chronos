@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import events from './events'
 import ExampleControlSlot from './ExampleControlSlot'
 
+const axios = require('axios').default;
+
 export default function MainCalendar(props) { // TODO add spinner, load events
-    const [calendarEvents, setEvents] = useState(events)
+    const [calendarEvents, setEvents] = useState(events);
     const handleSelect = ({ start, end }) => {
         const title = window.prompt('New Event name')
         if (title)
@@ -19,6 +21,22 @@ export default function MainCalendar(props) { // TODO add spinner, load events
             },
         ])
     }
+
+    useEffect(() => {
+        axios.get('api/events/' + props.match.params.id).then(function (response) {
+            setEvents(response.data.map((event) => {
+                return {
+                    id: event.id,
+                    title: event.name,
+                    start: new Date(event.date),
+                    end: new Date(new Date(event.date).getTime() + event.duration * 1000),
+                    desc: event.category,
+                  }
+            }))
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }, []);
 
     const localizer = momentLocalizer(moment)
     return (
@@ -34,8 +52,8 @@ export default function MainCalendar(props) { // TODO add spinner, load events
                 localizer={localizer}
                 events={calendarEvents}
                 defaultView={Views.WEEK}
-                scrollToTime={new Date(1970, 1, 1, 6)}
-                defaultDate={new Date(2015, 3, 12)}
+                scrollToTime={new Date(2000, 1, 1, 6)}
+                defaultDate={Date.now()}
                 onSelectEvent={event => alert(event.title)}
                 onSelectSlot={handleSelect}
             />

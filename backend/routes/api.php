@@ -18,6 +18,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('calendars/{id}', [CalendarsController::class, 'getById']);
 
     Route::post('events', [EventsController::class, 'create']);
+    Route::get('events/{id}', [EventsController::class, 'getById']);
     Route::get('events', [EventsController::class, 'getMy']);
 });
 
